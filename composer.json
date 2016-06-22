@@ -1,0 +1,35 @@
+{
+    "name": "wi-development/dashboard",
+    "description": "Admin's dashboard",
+    "url":"#https://github.com/wi-development/dashboard",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "type": "package",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Tonny Wijnand",
+            "email": "tonnywijnand@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "WI\\Dashboard\\": "src"
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+
+        ],
+        "post-create-project-cmd": [
+
+        ],
+        "post-install-cmd": [
+        ],
+        "post-update-cmd": [
+            "php artisan vendor:publish --tag=user-view",
+            "php artisan vendor:publish --tag=user-auth"
+        ]
+    },
+    "require": {}
+}
