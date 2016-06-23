@@ -25,14 +25,17 @@ class DashboardServiceProvider extends ServiceProvider
     public function boot()
     {
 
+	    if (!$this->app->routesAreCached()) {
+		    $this->setupRoutes($this->app->router);
+	    }
+
 	    if (is_dir(base_path() . '/resources/views/admin/dashboard')) {
-			$this->loadViewsFrom(base_path() . '/resources/views/admin/dasboard', 'dashboard');
-		} else {
-			$this->loadViewsFrom(__DIR__.'/views', 'dashboard');
-		}
-		if (!$this->app->routesAreCached()) {
-			$this->setupRoutes($this->app->router);
-		}
+		    //load from resource
+		    $this->loadViewsFrom(base_path() . '/resources/views/admin/dashboard', 'dashboard');
+	    } else {
+		    //load from package
+		    $this->loadViewsFrom(__DIR__.'/views', 'dashboard');
+	    }
 
 		config([
 			'wi/config/dashboard.php',
