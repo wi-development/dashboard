@@ -25,8 +25,8 @@ class DashboardServiceProvider extends ServiceProvider
     public function boot()
     {
 
-	    if (is_dir(base_path() . '/resources/views/wi/dashboard')) {
-			$this->loadViewsFrom(base_path() . '/resources/views/wi/dasboard', 'dashboard');
+	    if (is_dir(base_path() . '/resources/views/admin/dashboard')) {
+			$this->loadViewsFrom(base_path() . '/resources/views/admin/dasboard', 'dashboard');
 		} else {
 			$this->loadViewsFrom(__DIR__.'/views', 'dashboard');
 		}
