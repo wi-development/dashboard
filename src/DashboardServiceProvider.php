@@ -38,7 +38,7 @@ class DashboardServiceProvider extends ServiceProvider
 	    }
 
 		config([
-			'wi/config/dashboard.php',
+			'config/wi/dashboard.php',
 		]);
 
 		$this->publishes([

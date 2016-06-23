@@ -101,8 +101,6 @@ catch (Exception $e){echo "et".($e->getMessage());
                         </li>
 
 <?php
-$test = true;
-if (!($test)){
                         $liMainElement = "";
                         $ulSubElement = "class=\"collapse\"";
                         $ulLiSubElement = "";
@@ -199,9 +197,7 @@ if (!($test)){
                             </ul>
                         </li>
                     </ul>
-<?php
-} //end tset
-?>
+
                     <!--Widget-->
                     <!--================================-->
                     <div class="mainnav-widget">
