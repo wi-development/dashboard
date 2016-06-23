@@ -2,6 +2,8 @@
 
 try{
     $test = (route('admin::sitemap.index.all'));
+    //$test = (route('admin::media.index'));
+
 }
 catch (Exception $e){echo "et".($e->getMessage());
     return $e->getMessage();
@@ -98,7 +100,9 @@ catch (Exception $e){echo "et".($e->getMessage());
                             </ul>
                         </li>
 
-                        <?php
+<?php
+$test = true;
+if (!($test)){
                         $liMainElement = "";
                         $ulSubElement = "class=\"collapse\"";
                         $ulLiSubElement = "";
@@ -195,7 +199,9 @@ catch (Exception $e){echo "et".($e->getMessage());
                             </ul>
                         </li>
                     </ul>
-
+<?php
+} //end tset
+?>
                     <!--Widget-->
                     <!--================================-->
                     <div class="mainnav-widget">
