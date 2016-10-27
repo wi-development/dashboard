@@ -63,59 +63,15 @@
     <link href="{{config('wi.dashboard.theme_path')}}/vendor/fooTable/css/footable.core.css" rel="stylesheet">
 -->
 
-    <link href="https://cdn.datatables.net/t/bs/dt-1.10.11,rr-1.1.1/datatables.min.css" rel="stylesheet">
 
     @yield('css.head')
 
 
 <!--TODO: css-->
 <style>
-    @media (min-width: 992px){
-        .modal-lg {
-            width: 80%;
-        }
-    }
-    input.form-control{
+    .form-control{
         height:auto;
     }
-
-    select.form-control{
-        height:34px;
-        /*
-        -webkit-appearancxxe: none;
-        x-webkit-border-radxxius: 0px;
-        border: 0 solid red;
-        outline: 1px inset black;
-        outline-offset:-1px;
-        */
-
-        -webkit-appearance: none;
-        -webkit-border-radius: 0px;
-        background: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='24' height='24' viewBox='0 0 24 24'><path fill='#444' d='M7.406 7.828l4.594 4.594 4.594-4.594 1.406 1.406-6 6-6-6z'></path></svg>");
-        background-position: 100% 50%;
-        background-repeat: no-repeat;
-    }
-
-
-
-
-    select[multiple].form-control{
-        background:none;
-        height:auto;
-    }
-    select.form-control option{
-        xpadding:1em;
-    }
-
-
-    .dataTables_length select.input-sm{
-        line-height: 1.5em;
-        height:2.3em;
-    }
-
-
-
-    .form-controlx,
     table.dataTable thead .sorting_desc:after,
     table.dataTable thead .sorting_asc:after{
         opacity: 0.8;
@@ -295,7 +251,52 @@
 
 
 
+    .nifty-ready .effect #navbar,
+    .nifty-ready .effect #content-container,
+    .nifty-ready .effect #mainnav-container,
+    .nifty-ready .effect #aside-container,
+    .nifty-ready .effect #footer,
+    .nifty-ready .effect .navbar-brand,
+    .nifty-ready .effect .navbar-content,
+    .nifty-ready .effect .navbar-header::before,
+    .xxxnifty-ready .effect #appxx{
+        transition-property: width,padding,left,right;
+        transition-duration: .35s;
+    }
 
+    #appxx{
+        xwidth: 100%;
+    }
+
+    @media (min-width: 768px){
+        #container.aside-in #content-container,
+        #container.aside-in:not(.mainnav-in) #footer {
+            padding-right: 320px;
+        }
+
+
+        #container #aside-container {
+            width:320px;
+            right: -320px;
+        }
+
+
+        #container.aside-in #aside-container {
+            left: auto;
+            right: 0;
+        }
+
+    }
+
+
+
+    .form-checkbox.form-icon.form-silver:after, .form-radio.form-icon.form-silver:after {
+        color: silver;
+    }
+
+    .v-cloak,
+    [v-cloak] {     visibility: hidden;
+    }
 
 
 
@@ -338,7 +339,7 @@
 
 <body>
 
-<div id="container" class="effect mainnav-lg">
+<div id="container" class="effect mainnav-lg aside-in aside-uit-fixed aside-uit-bright">
 
     <!--NAVBAR-->
     @include('dashboard::partials.header')
@@ -346,21 +347,22 @@
 
     <div class="boxed">
 
+        <!--MAIN NAVIGATION-->
+        @include('dashboard::partials.main-nav-chart')
+        <!--END MAIN NAVIGATION-->
+
+
+
         <!--CONTENT CONTAINER-->
-            <div id="content-container">
-                @yield('content')
-            </div>
+           @yield('content')
+
         <!--END CONTENT CONTAINER-->
 
 
 
-        <!--MAIN NAVIGATION-->
-            @include('dashboard::partials.main-nav-mijnZD')
-        <!--END MAIN NAVIGATION-->
 
-        <!--ASIDE-->
-            @include('dashboard::partials.aside')
-        <!--END ASIDE-->
+
+
 
 
     </div>
@@ -854,7 +856,7 @@
 <script src="{{config('wi.dashboard.theme_path')}}/vendor/bootstrap-select/bootstrap-select.min.js"></script>
 
 <!--Demo script [ DEMONSTRATION ]-->
-<script src="{{config('wi.dashboard.theme_path')}}/js/demo/nifty-demo.js"></script>
+<script src="{{config('wi.dashboard.theme_path')}}/js/demo/nifty-demo.min.js"></script>
 
 
 @yield('scripts.footer')

@@ -49,56 +49,35 @@ catch (Exception $e){echo "et".($e->getMessage());
                         <!--Category name-->
                         <li class="list-header">Navigation</li>
                     <?php
-                    use Illuminate\Support\Facades\Route;$liMainElement = "";
-                    $ulSubElement = "class=\"collapse\"";
-                    if (starts_with(Route::currentRouteName(),"admin::dashboard")){
-                        $liMainElement = "class=\"active-link active\"";
-                        $ulSubElement = "class=\"collapse in\"";
-                    }?>
-                    <!--Menu list item-->
+                    use Illuminate\Support\Facades\Route;
+                    ?>
+
+
+                        <?php
+                        $liMainElement = "";
+                        $ulSubElement = "class=\"collapse\"";
+                        $ulLiSubElement = "";
+                        $currentRouteName = Route::currentRouteName();
+                        if (starts_with($currentRouteName,"admin::reference.component")){
+                            $liMainElement = "class=\"active-link\"";
+                            $ulSubElement = "class=\"collapse in\"";
+                            $ulLiSubElement = "class=\"active-link\"";
+                        }?>
+
+
+
                         <li <?php echo($liMainElement);?>>
-                            <a href="{{route('admin::dashboard')}}">
-                                <i class="psi-home xhide"></i>
-                                <i class="fa fa-home hidden"></i>
-                                <span class="menu-title">
-                                        <strong>Dashboard</strong>
-                                        <span class="label label-success pull-right">Top</span>
-                                    </span>
+                            <a href="{{route('admin::reference.component.index',['component_name'=>'bookmarks'])}}">
+                                <i class="fa fa-building-o xhidden" aria-hidden="true"></i>
+                                <span class="menu-title">Bookmarks</span>
                             </a>
                         </li>
 
-                    <?php
-                    $liMainElement = "";
-                    $ulSubElement = "class=\"collapse\"";
-                    $ulLiSubElement = "";
-                    $currentRouteName = Route::currentRouteName();
-                    //$currentRouteAction = Route::currentRouteAction();
-                    //dc(Route::currentRouteAction());
-                    if (starts_with($currentRouteName,"admin::sitemap")
 
-                    ){
-                        $liMainElement = "class=\"active-x active-sub\"";
-                        $ulSubElement = "class=\"collapse in\"";
-                        $ulLiSubElement = "class=\"active-link\"";
-                    }?>
-                    <!--User list item-->
-                        <li <?php echo($liMainElement);?>>
-                            <a href="#">
-                                <i class="ti-files"></i>
-                                <i class="fa fa-files-o hidden"></i>
-                                <span class="menu-title">
-                                        <strong>Pagina's</strong>
-                                    </span>
-                                <i class="arrow"></i>
-                            </a>
 
-                            <!--Submenu-->
-                            <ul <?php echo($ulSubElement);?>>
-                                <li <?php if (starts_with($currentRouteName,"admin::sitemap.index")){echo($ulLiSubElement);}?>><a href="{{route('admin::sitemap.index.all')}}">Alle pagina's</a></li>
-                                <li <?php if (starts_with($currentRouteName,"admin::sitemap.news")){echo($ulLiSubElement);}?>><a href="{{route('admin::sitemap.news.index')}}">Nieuws overzicht</a></li>
-                                <li <?php if (starts_with($currentRouteName,"admin::sitemap.locaties")){echo($ulLiSubElement);}?>><a href="{{route('admin::sitemap.locaties.index')}}">Locatie overzicht</a></li>
-                            </ul>
-                        </li>
+
+
+
 
                     <?php
                     $liMainElement = "";
@@ -132,6 +111,12 @@ catch (Exception $e){echo "et".($e->getMessage());
                             </ul>
                         </li>
 
+
+
+
+                        <li class="list-divider"></li>
+
+
                     <?php
                     $liMainElement = "";
                     $ulSubElement = "class=\"collapse\"";
@@ -162,28 +147,7 @@ catch (Exception $e){echo "et".($e->getMessage());
                         </li>
 
 
-                    <?php
-                    $liMainElement = "";
-                    $ulSubElement = "class=\"collapse\"";
-                    $ulLiSubElement = "";
-                    $currentRouteName = Route::currentRouteName();
-                    if (starts_with($currentRouteName,"admin::company")){
-                        $liMainElement = "class=\"active-link\"";
-                        $ulSubElement = "class=\"collapse in\"";
-                        $ulLiSubElement = "class=\"active-link\"";
-                    }?>
-                    <!--User list item-->
 
-
-                        <li <?php echo($liMainElement);?>>
-                            <a href="{{route('admin::company.index',['id'=>1])}}">
-                                <i class="fa fa-building-o xhidden" aria-hidden="true"></i>
-                                <span class="menu-title">Bedrijven</span>
-                            </a>
-                        </li>
-
-
-                        <li class="list-divider"></li>
 
                     <?php
                     $liMainElement = "";
@@ -213,6 +177,11 @@ catch (Exception $e){echo "et".($e->getMessage());
                                 <li <?php if (starts_with($currentRouteName,"admin::role.create")){echo($ulLiSubElement);}?>><a href="{{route('admin::role.create')}}">Rol toevoegen</a></li>
                             </ul>
                         </li>
+
+
+
+
+
 
 
 
@@ -269,6 +238,9 @@ catch (Exception $e){echo "et".($e->getMessage());
                         $liMainElement = "class=\"active-x active-sub\"";
                         $ulSubElement = "class=\"collapse in\"";
                         $ulLiSubElement = "class=\"active-link\"";
+
+
+                        $liMainElement = "hidden";
                     }?>
                     <!--User list item-->
                         <li <?php echo($liMainElement);?>>

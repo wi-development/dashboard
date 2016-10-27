@@ -17,18 +17,18 @@ catch (Exception $e){echo "et".($e->getMessage());
         <!--Shortcut buttons-->
         <!--================================-->
         <div id="mainnav-shortcut">
-            <ul class="list-unstyled">
+            <ul class="list-unstyled hidden">
                 <li class="col-xs-4" data-content="Additional Sidebar">
                     <a id="demo-toggle-aside" class="shortcut-grid" href="#">
                         <i class="psi-sidebar-window"></i>
                     </a>
                 </li>
-                <li class="col-xs-4" data-content="Notification">
+                <li class="col-xs-4 hiddenx" data-content="Notification">
                     <a id="demo-alert" class="shortcut-grid" href="#">
                         <i class="psi-speech-bubble-comic-2"></i>
                     </a>
                 </li>
-                <li class="col-xs-4" data-content="Page Alerts">
+                <li class="col-xs-4 hiddenx" data-content="Page Alerts">
                     <a id="demo-page-alert" class="shortcut-grid" href="#">
                         <i class="psi-warning-window"></i>
                     </a>
@@ -47,7 +47,7 @@ catch (Exception $e){echo "et".($e->getMessage());
                     <ul id="mainnav-menu" class="list-group">
 
                         <!--Category name-->
-                        <li class="list-header">Navigation</li>
+                        <li class="list-header">Navigatie</li>
                     <?php
                     use Illuminate\Support\Facades\Route;$liMainElement = "";
                     $ulSubElement = "class=\"collapse\"";
@@ -62,7 +62,7 @@ catch (Exception $e){echo "et".($e->getMessage());
                                 <i class="fa fa-home hidden"></i>
                                 <span class="menu-title">
                                         <strong>Dashboard</strong>
-                                        <span class="label label-success pull-right">Top</span>
+                                        <span class="label label-warning pull-right">demo</span>
                                     </span>
                             </a>
                         </li>
@@ -82,7 +82,7 @@ catch (Exception $e){echo "et".($e->getMessage());
                         $ulLiSubElement = "class=\"active-link\"";
                     }?>
                     <!--User list item-->
-                        <li <?php echo($liMainElement);?>>
+                        <li <?php echo($liMainElement);?> style="display:none">
                             <a href="#">
                                 <i class="ti-files"></i>
                                 <i class="fa fa-files-o hidden"></i>
@@ -100,7 +100,36 @@ catch (Exception $e){echo "et".($e->getMessage());
                             </ul>
                         </li>
 
+
                     <?php
+                    $liMainElement = "";
+                    $ulSubElement = "class=\"collapse\"";
+                    $ulLiSubElement = "";
+                    $currentRouteName = Route::currentRouteName();
+                    if (starts_with($currentRouteName,"admin::chart")){
+                        $liMainElement = "class=\"active-link\"";
+                        $ulSubElement = "class=\"collapse in\"";
+                        $ulLiSubElement = "class=\"active-link\"";
+                    }?>
+                    <!--User list item-->
+
+
+                        <li <?php echo($liMainElement);?>>
+                            <a href="{{route('admin::chart.all.index')}}">
+                                <i class="fa fa-file-o xhidden" aria-hidden="true"></i>
+                                <span class="menu-title">Verzuimvensters</span>
+                            </a>
+                        </li>
+
+
+
+                        <li class="list-divider"></li>
+
+
+
+
+                    <?php
+                            /*
                     $liMainElement = "";
                     $ulSubElement = "class=\"collapse\"";
                     $ulLiSubElement = "";
@@ -113,7 +142,7 @@ catch (Exception $e){echo "et".($e->getMessage());
                         $liMainElement = "class=\"active-x active-sub\"";
                         $ulSubElement = "class=\"collapse in\"";
                         $ulLiSubElement = "class=\"active-link\"";
-                    }?>
+                    }
                     <!--User list item-->
                         <li <?php echo($liMainElement);?>>
                             <a href="#">
@@ -131,6 +160,16 @@ catch (Exception $e){echo "et".($e->getMessage());
                                 <li <?php if (starts_with($currentRouteName,"admin::media")){echo($ulLiSubElement);}?>><a href="{{route('admin::media.index')}}">Overzicht</a></li>
                             </ul>
                         </li>
+                        */
+                     ?>
+
+
+
+
+
+
+
+
 
                     <?php
                     $liMainElement = "";
@@ -176,81 +215,18 @@ catch (Exception $e){echo "et".($e->getMessage());
 
 
                         <li <?php echo($liMainElement);?>>
-                            <a href="{{route('admin::company.index',['id'=>1])}}">
+                            <a href="{{route('admin::company.all.index')}}">
                                 <i class="fa fa-building-o xhidden" aria-hidden="true"></i>
                                 <span class="menu-title">Bedrijven</span>
                             </a>
                         </li>
 
 
-                        <li class="list-divider"></li>
-
-                    <?php
-                    $liMainElement = "";
-                    $ulSubElement = "class=\"collapse\"";
-                    $ulLiSubElement = "";
-                    $currentRouteName = Route::currentRouteName();
-                    if (starts_with($currentRouteName,"admin::role")){
-                        $liMainElement = "class=\"active-x active-sub\"";
-                        $ulSubElement = "class=\"collapse in\"";
-                        $ulLiSubElement = "class=\"active-link\"";
-                    }?>
-                    <!--User list item nifty demo icons-->
-                        <li <?php echo($liMainElement);?>>
-                            <a href="#">
-                                <i class="pli-unlock shidden"></i>
-                                <i class="fa fa-users hidden"></i>
-                                <i class="ti-user hidden"></i>
-                                <span class="menu-title">
-                                        <strong>Rollen beheer</strong>
-                                    </span>
-                                <i class="arrow"></i>
-                            </a>
-
-                            <!--Submenu-->
-                            <ul <?php echo($ulSubElement);?>>
-                                <li <?php if (starts_with($currentRouteName,"admin::role.all")){echo($ulLiSubElement);}?>><a href="{{route('admin::role.all.index')}}">Alle rollen</a></li>
-                                <li <?php if (starts_with($currentRouteName,"admin::role.create")){echo($ulLiSubElement);}?>><a href="{{route('admin::role.create')}}">Rol toevoegen</a></li>
-                            </ul>
-                        </li>
-
-
-
-                    <?php
-                    $liMainElement = "";
-                    $ulSubElement = "class=\"collapse\"";
-                    $ulLiSubElement = "";
-                    $currentRouteName = Route::currentRouteName();
-                    if (starts_with($currentRouteName,"admin::permission")){
-                        $liMainElement = "class=\"active-x active-sub\"";
-                        $ulSubElement = "class=\"collapse in\"";
-                        $ulLiSubElement = "class=\"active-link\"";
-                    }?>
-                    <!--User list item nifty demo icons-->
-                        <li <?php echo($liMainElement);?>>
-                            <a href="#">
-                                <i class="fa fa-check-square-o"></i>
-                                <span class="menu-title">
-                                        <strong>Permissie beheer</strong>
-                                    </span>
-                                <i class="arrow"></i>
-                            </a>
-
-                            <!--Submenu-->
-                            <ul <?php echo($ulSubElement);?>>
-                                <li <?php if (starts_with($currentRouteName,"admin::permissiom.all")){echo($ulLiSubElement);}?>><a href="{{route('admin::permission.all.index')}}">Alle permissies</a></li>
-                                <li <?php if (starts_with($currentRouteName,"admin::permission.create")){echo($ulLiSubElement);}?>><a href="{{route('admin::permission.create')}}">Permission toevoegen</a></li>
-                            </ul>
-                        </li>
-
-
-
-
-
 
                         <li class="list-divider"></li>
 
                     <?php
+                    /*
                     $liMainElement = "";
                     $ulSubElement = "class=\"collapse\"";
                     $ulLiSubElement = "";
@@ -269,7 +245,8 @@ catch (Exception $e){echo "et".($e->getMessage());
                         $liMainElement = "class=\"active-x active-sub\"";
                         $ulSubElement = "class=\"collapse in\"";
                         $ulLiSubElement = "class=\"active-link\"";
-                    }?>
+                    }
+
                     <!--User list item-->
                         <li <?php echo($liMainElement);?>>
                             <a href="#">
@@ -287,7 +264,18 @@ catch (Exception $e){echo "et".($e->getMessage());
                                 <li <?php if (starts_with($currentRouteName,"admin::reference")){echo($ulLiSubElement);}?>><a href="{{route('admin::reference.index')}}">References</a></li>
                             </ul>
                         </li>
+
+
+                        */
+                        ?>
+
+
+
+
+
                     </ul>
+
+
 
                     <!--Widget-->
                     <!--================================-->

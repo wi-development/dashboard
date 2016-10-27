@@ -1,7 +1,7 @@
 <aside id="aside-container">
     <div id="aside">
         <div class="nano">
-            <div class="nano-content">
+            <div class="nano-content">dashboard aside
 
                 <!--Nav tabs-->
                 <!--================================-->

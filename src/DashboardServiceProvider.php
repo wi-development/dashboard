@@ -55,14 +55,13 @@ class DashboardServiceProvider extends ServiceProvider
 		 */
 		public function setupRoutes(Router $router)
 		{
-
 			$router->group([
 				//'namespace' => 'WI\Dashboard',
 				'namespace' => 'WI\Dashboard',	// Controllers Within The "WI\Dashboard" Namespace
 				'as' => 'admin::',		// Route named "admin::
 				//'prefix' => 'backStage',	// Matches The "/admin" URL
 				'prefix' => config('wi.dashboard.admin_prefix'),
-				'middleware' => ['web','auth']	// Use Auth Middleware
+				'middleware' => ['web','auth','role:beheerder']	// ,'role:beheerder' Use Auth Middleware
 			],
 				function($router)
 				{
@@ -79,7 +78,7 @@ class DashboardServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        #dd('asdf');
+        //dd('asdf');
 		#include __DIR__.'/routes.php';
 		$this->app->make('WI\Dashboard\DashboardController');
 

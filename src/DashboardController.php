@@ -14,7 +14,8 @@ class DashboardController extends Controller {
   */
   public function index()
   {
-    $users = User::all();
+	//  return redirect()->route('admin::chart.all.index');
+  	$users = User::all();
     return view('dashboard::index',compact('users'));
   }
 }

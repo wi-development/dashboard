@@ -5,9 +5,9 @@
         <!--================================-->
         <div class="navbar-header">
             <a href="index.html" class="navbar-brand">
-                <img src="{{config('wi.dashboard.theme_path')}}/img/logo.png" alt="Nifty Logo" class="brand-icon">
-                <div class="brand-title">
-                    <span class="brand-text">Nifty</span>
+                <img src="{{config('wi.dashboard.logo')}}" alt="{{config('wi.dashboard.name')}}" class="brand-icon">
+                <div class="brand-title" style="background-color:{{config('wi.dashboard.brand-title-color')}}">
+                    <span class="brand-text">{{config('wi.dashboard.name')}}</span>
                 </div>
             </a>
         </div>
@@ -34,7 +34,7 @@
 
                 <!--Notification dropdown-->
                 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                <li class="dropdown">
+                <li class="dropdown hidden">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                         <i class="pli-bell"></i>
                         <span class="badge badge-header badge-danger"></span>
@@ -132,7 +132,8 @@
                                             </div>
                                         </a>
                                     </li>
-                                    <?php/*
+                                    <?php
+                                            /*
                                                 print message_dropdown("av4.png", "Lucy", "30 minutes ago");
                                                 print message_dropdown("av3.png", "Jackson", "40 minutes ago");
                                                 print notification_dropdown('icon-circle bg-danger', 'fa-hdd-o', 'HDD is full', '50 minutes ago', 'badge badge-success', '90%');
@@ -140,7 +141,8 @@
                                                 print notification_dropdown('bg-purple', 'fa-comment', 'Comment Sorting', 'Last Update 8 hours ago', 'label label-danger', 'New');
                                                 print notification_dropdown('bg-success', 'fa-user', 'New User Registered', '4 minutes ago');
                                                 print message_dropdown("av3.png", "Jackson", "Yesterday");
-                                            */?>
+                                            */
+                                    ?>
                                             <!-- Dropdown list-->
                                     <li class="bg-gray">
                                         <a class="media" href="#">
@@ -185,7 +187,7 @@
 
                 <!--Mega dropdown-->
                 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                <li class="mega-dropdown">
+                <li class="mega-dropdow hidden">
                     <a href="#" class="mega-dropdown-toggle">
                         <i class="pli-layout-grid"></i>
                     </a>
@@ -276,12 +278,12 @@
                 <li class="dropdown">
                     <a id="demo-lang-switch" class="lang-selector dropdown-toggle" href="#" data-toggle="dropdown">
                                 <span class="lang-selected">
-                                    <img class="lang-flag" src="{{config('wi.dashboard.theme_path')}}/img/flags/united-kingdom.png" alt="English">
+                                    <img class="lang-flag" src="{{config('wi.dashboard.theme_path')}}/img/flags/dutch.png" alt="Nederlands">
                                 </span>
                     </a>
 
                     <!--Language selector menu-->
-                    <ul class="head-list dropdown-menu">
+                    <ul class="head-list dropdown-menu hidden">
                         <li>
                             <!--English-->
                             <a href="#" class="active">
@@ -336,7 +338,14 @@
                                 <span class="pull-right">
                                     <img class="img-circle img-user media-object" src="{{config('wi.dashboard.theme_path')}}/img/av1.png" alt="Profile Picture">
                                 </span>
-                        <div class="username hidden-xs">{{ Auth::user()->name }}</div>
+                        <div class="username hidden-xs">{{ Auth::user()->name }}
+
+                        <?php
+                            $tRoles = Auth::user()->roles()->get()->pluck('name')->all();
+                            $tRoles = implode( ", ", $tRoles);
+                                echo $tRoles;
+                            ?>
+                        </div>
                     </a>
 
 
@@ -344,7 +353,7 @@
 
                         <!-- Dropdown heading  -->
                         <div class="pad-all bord-btm">
-                            <p class="text-lg text-semibold mar-btm">750Gb of 1,000Gb Used</p>
+                            <p class="text-lg text-semibold mar-btm">0.13Gb van 1,000Gb gebruikt</p>
                             <div class="progress progress-sm">
                                 <div class="progress-bar" style="width: 70%;">
                                     <span class="sr-only">70%</span>
@@ -356,28 +365,28 @@
                         <!-- User dropdown menu -->
                         <ul class="head-list">
                             <li>
-                                <a href="#">
-                                    <i class="pli-male icon-lg icon-fw"></i> Profile
+                                <a href="{{route('admin::user.edit',['userid'=>Auth::user()->id])}}">
+                                    <i class="pli-male icon-lg icon-fw"></i> Profiel
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
+                            <li class="hiddenx">
+                                <a>
                                     <span class="badge badge-danger pull-right">9</span>
-                                    <i class="pli-mail icon-lg icon-fw"></i> Messages
+                                    <i class="pli-mail icon-lg icon-fw"></i> Berichten
                                 </a>
                             </li>
-                            <li>
+                            <li class="hidden">
                                 <a href="#">
                                     <span class="label label-success pull-right">New</span>
                                     <i class="pli-gear icon-lg icon-fw"></i> Settings
                                 </a>
                             </li>
-                            <li>
+                            <li class="hidden">
                                 <a href="#">
                                     <i class="pli-information icon-lg icon-fw"></i> Help
                                 </a>
                             </li>
-                            <li>
+                            <li class="hidden">
                                 <a href="#">
                                     <i class="pli-computer-secure icon-lg icon-fw"></i> Lock screen
                                 </a>
