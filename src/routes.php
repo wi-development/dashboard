@@ -1,8 +1,9 @@
 <?php
 #Route::get('/backStages', 'DashboardController@index');
 Route::get('/',             ['as' => 'dashboard'                ,'uses' => 'DashboardController@index']);
-
-#
+Route::get('/x',             ['as' => 'dashboardxx'                ,'uses' => 'DashboardController@index']);
+#TEST
+#123 submodule
 
 /*Route::get('/', ['as' => 'backStage', 'uses' => 'DashboardController@index'
     , function () {
